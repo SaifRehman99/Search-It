@@ -117,9 +117,91 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.js":[function(require,module,exports) {
+})({"searchitapi.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  search: function search(item, sort, limit) {
+    return fetch("http://www.reddit.com/search.json?q=".concat(item, "&sort=").concat(sort, "&limit=").concat(limit)).then(function (res) {
+      return res.json();
+    }).then(function (data) {
+      return data.data.children.map(function (item) {
+        return item.data;
+      });
+    }).catch(function (err) {
+      return console.log(err);
+    });
+  }
+};
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _searchitapi = _interopRequireDefault(require("./searchitapi"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// importing the function here
 // getting the refrences here
-},{}],"C:/Users/Saif Rehman/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var form = document.querySelector('#search');
+var input = document.querySelector('#inputText'); // adding the event listeners
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault(); // getting the input value
+
+  var value = input.value; // getting the sort value
+
+  var sortValue = document.querySelector('input[name="sortby"]:checked').value; // getting the limit value
+
+  var limtiValue = document.querySelector('#limit').value; // validating the form
+
+  if (value === '') {
+    showMessage('Please type something to search', 'alert-danger');
+  } // clearing the value here
+
+
+  input.value = ''; // search here
+
+  _searchitapi.default.search(value, sortValue, limtiValue).then(function (res) {
+    var output = '<div class="card-columns">';
+    res.forEach(function (post) {
+      // Check for image
+      var image = post.preview ? post.preview.images[0].source.url : 'https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg';
+      output += "\n            <div class=\"card mb-2\">\n            <img class=\"card-img-top\" src=\"".concat(image, "\" alt=\"Card image cap\">\n            <div class=\"card-body\">\n              <h5 class=\"card-title\">").concat(post.title, "</h5>\n              <p class=\"card-text\">").concat(truncateString(post.selftext, 100), "</p>\n              <a href=\"").concat(post.url, "\" target=\"_blank\n              \" class=\"btn btn-primary\">Read More</a>\n              <hr>\n              <span class=\"badge badge-secondary\">Subreddit: ").concat(post.subreddit, "</span> \n              <span class=\"badge badge-dark\">Score: ").concat(post.score, "</span>\n            </div>\n          </div>\n            ");
+    });
+    output += '</div>';
+    document.getElementById('output').innerHTML = output;
+  });
+}); // message function
+
+var showMessage = function showMessage(txt, cls) {
+  // creating the div
+  var div = document.createElement('div'); // adding the class
+
+  div.className = "alert ".concat(cls); // adding txt
+
+  div.textContent = txt; // getting the parent
+
+  var parent = document.getElementById('search-container');
+  var parentChild = document.getElementById('search'); // appending here
+
+  parent.insertBefore(div, parentChild);
+  setTimeout(function () {
+    document.querySelector('.alert').remove();
+  }, 2000);
+}; // Truncate String Function
+
+
+function truncateString(myString, limit) {
+  var shortened = myString.indexOf(' ', limit);
+  if (shortened == -1) return myString;
+  return myString.substring(0, shortened);
+}
+},{"./searchitapi":"searchitapi.js"}],"C:/Users/Saif Rehman/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -147,7 +229,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55880" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58668" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
