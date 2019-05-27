@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.e308ff8e.css">
+    <title>Search It </title>
+<script src="/style.e308ff8e.js"></script></head>
+
+<body>
+    <nav class="navbar navbar-dark bg-info mb-3">
+        <div class="container">
+            <span class="navbar-brand"><h2>Search It</h2></span>
+        </div>
+    </nav>
+
+    <div id="search-container" class="container">
+        <div id="search" class="card card-body bg-light mb-2">
+            <h4>Search Reddit</h4>
+            <form id="search">
+                <div class="form-group">
+                    <input type="text" id="input" class="form-control mb-3" placeholder="Search Here....">
+                </div>
+                <div class="form-check form-check-inline">
+                    Sort By:
+                    <input class="form-check-input ml-2" type="radio" name="sortby" value="relevance" checked="">
+                    <label class="form-check-label">
+                        Relevance
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sortby" value="new">
+                    <label class="form-check-label">
+                        Latest
+                    </label>
+                </div>
+                <h5 class="mt-2">Limit: </h5>
+                <div class="form-group">
+                    <select name="limit" id="limit" class="form-control">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25" selected="">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success btn-block mt-4">Search IT</button>
+            </form>
+        </div>
+        <div id="output"></div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+<script src="/Search-It.e31bb0bc.js"></script>
+
+</html>
