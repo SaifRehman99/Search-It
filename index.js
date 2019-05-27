@@ -1,3 +1,7 @@
+// importing the function here
+import searchit from './searchitapi';
+
+
 // getting the refrences here
 const form = document.querySelector('#search');
 const input = document.querySelector('#inputText');
@@ -19,6 +23,11 @@ form.addEventListener('submit',(e)=>{
     if(value===''){
         showMessage('Please type something to search','alert-danger');
     }
+
+    // clearing the value here
+    input.value = ''
+
+    // search here
 });
 
 // message function
